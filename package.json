@@ -24,7 +24,6 @@
     "dev": "tsup src/index.ts --watch src",
     "build": "yarn clean && run-p build:bundle",
     "build:bundle": "tsup src/index.ts --dts --format cjs,esm",
-    "build:umd": "rollup -c scripts/rollup.config.js",
     "clean": "rm -rf dist",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue",
     "release": "yunque-release",
