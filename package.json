@@ -1,0 +1,67 @@
+{
+  "name": "exception-error",
+  "version": "1.0.0",
+  "description": "exception-error",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xinlei3166/exception-error"
+  },
+  "keywords": [
+    "exception",
+    "error"
+  ],
+  "bugs": {
+    "url": "https://github.com/xinlei3166/exception-error/issues"
+  },
+  "homepage": "https://github.com/xinlei3166/exception-error",
+  "author": "君惜",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "dev": "tsup src/index.ts --watch src",
+    "build": "yarn clean && run-p build:bundle",
+    "build:bundle": "tsup src/index.ts --dts --format cjs,esm",
+    "build:umd": "rollup -c scripts/rollup.config.js",
+    "clean": "rm -rf dist",
+    "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue",
+    "release": "yunque-release",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/node": "^14.14.39",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
+    "@yunquejs/release": "^0.1.4",
+    "conventional-changelog-cli": "^2.1.1",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "jest": "^26.1.0",
+    "lint-staged": "^10.5.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.3.0",
+    "ts-node": "^9.1.1",
+    "tsup": "^4.11.1",
+    "typescript": "^4.2.3",
+    "yorkie": "^2.0.0"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verify-commit.js"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
